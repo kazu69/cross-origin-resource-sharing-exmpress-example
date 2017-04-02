@@ -1,0 +1,27 @@
+{
+  "name": "cros-express",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "create:key": "openssl genrsa -out keys/server.key 2048",
+    "create:cert": "openssl req -new -x509 -key keys/server.key -out keys/server.cert -days 3650 -subj /CN=localhost",
+    "build:keys": "npm run create:ke && npm run create:cert",
+    "build": "babel src --out-dir app --presets=latest",
+    "prestart": "npm run build",
+    "start": "node app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.24.0",
+    "express": "^4.15.2",
+    "express-session": "^1.15.1",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-beta11"
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.24.0"
+  }
+}
